@@ -1,0 +1,87 @@
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+### End of Zinit's installer chunk
+
+#zinit snippet OMZ::plugins/history-substring-search/history-substring-search.plugin.zsh
+#zinit ice as="completion"
+#zinit snippet OMZ::plugins/history-substring-search/history-substring-search.zsh
+#zinit ice as="completion"
+#zinit snippet OMZ::plugins/history-substring-search/update-from-upstream.zsh
+#zinit snippet OMZ::plugins/per-directory-history/per-directory-history.plugin.zsh
+#zinit ice as="completion"
+#zinit snippet OMZ::plugins/per-directory-history/per-directory-history.zsh
+#zinit snippet OMZ::plugins/vi-mode/vi-mode.plugin.zsh
+# zinit light zsh-users/zsh-completions
+
+#export http_proxy="socks5://localhost:1080"
+#export https_proxy="socks5://localhost:1080"
+#export all_proxy="socks5://localhost:1080"
+#export ALL_PROXY="socks5://localhost:1080"
+#export PATH="$PATH:/d/Programs/scoop/apps/git/2.31.1.windows.1/cmd"
+
+zinit light-mode for \
+    mskyaxl/zsh-pwd-tmux \
+    zdharma/fast-syntax-highlighting \
+    zsh-users/zsh-autosuggestions
+    
+zinit wait="1" lucid for \
+    OMZL::clipboard.zsh \
+    OMZL::git.zsh \
+    OMZP::command-not-found/command-not-found.plugin.zsh \
+    OMZP::cp/cp.plugin.zsh \
+    OMZP::sudo/sudo.plugin.zsh \
+    OMZP::git/git.plugin.zsh
+    # OMZ::plugins/zsh_reload/zsh_reload.plugin.zsh
+    
+zinit svn for \
+    OMZP::history-substring-search \
+    OMZP::per-directory-history
+    
+zinit as="completion" for \
+    OMZP::fd/_fd
+    
+zinit wait="1" svn for \
+    OMZP::z
+    
+zinit as="completion" for \
+    OMZP::fd/_fd
+    
+# zinit light skywind3000/z.lua
+
+bindkey '^P' history-substring-search-up
+bindkey '^N' history-substring-search-down
+
+zinit ice depth=1
+zinit light romkatv/powerlevel10k
+
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=9999
+SAVEHIST=9999
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export DOCKER_CERT_PATH='/f/docker/images/machines/Tiny-Core-Docker'
+export DOCKER_HOST=tcp://192.168.99.102:2376
+export DOCKER_MACHINE_NAME='Tiny-Core-Docker'
+export DOCKER_TLS_VERIFY='1'
+export DOCKER_TOOLBOX_INSTALL_PATH=/d/Program\ Files/Green\ Program\ Files/Docker\ Toolbox
+export MACHINE_STORAGE_PATH='/f/docker/images'
+export ELECTRON_MIRROR='http://npm.taobao.org/mirrors/electron'
+
+# if [ -t 1 ]; then
+#     exec /usr/bin/zsh
+# fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

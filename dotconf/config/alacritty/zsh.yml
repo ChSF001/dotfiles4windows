@@ -1,0 +1,4 @@
+shell: 
+  program: D:\Programs\scoop\apps\msys2\current\usr\bin\zsh.exe
+  args:
+    - -l

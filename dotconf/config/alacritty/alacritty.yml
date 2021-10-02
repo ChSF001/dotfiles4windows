@@ -1,0 +1,4 @@
+shell: 
+  program: D:\Programs\scoop\apps\git\current\bin\bash.exe
+  args:
+    - -l

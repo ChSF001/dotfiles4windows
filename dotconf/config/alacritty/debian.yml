@@ -1,0 +1,10 @@
+shell: 
+  #program: D:\Program Files\WSL\Debian\debian.exe
+  #program: wsl.exe
+  program: D:\Programs\scoop\apps\msys2\current\usr\bin\wslbridge2.exe
+  args:
+    #- '~'
+    # - -W
+    # - '$HOME'
+    - -d
+    - Debian

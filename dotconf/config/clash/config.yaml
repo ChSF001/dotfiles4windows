@@ -1,0 +1,66 @@
+# 混合代理端口
+mixed-port: 7890
+
+# socks5 代理端口
+socks-port: 1080
+
+# http 代理端口
+port: 8118
+
+# 局域网的连接
+allow-lan: false
+
+# Clash 的 RESTful API
+external-controller: '127.0.0.1:9090'
+
+external-ui: 'F:\pvz77\Documents\git\clash-dashboard'
+
+# RESTful API 的口令
+secret: ''
+
+# ip v6 协议
+ipv6: true
+
+proxies:
+  - name: "@SSRSUB-俄罗斯ss11-付费推荐:dlj.tf/ssrsub"
+    type: ss
+    server: ss11.ssrsub.one
+    port: "9443"
+    cipher: aes-128-gcm
+    password: suo.yt/ssrsub
+    plugin: obfs
+    plugin-opts:
+      mode: tls
+      host: n46hm52773.wns.windows.com
+  - name: "@SSRSUB-俄罗斯ss12-付费推荐:dlj.tf/ssrsub"
+    type: ss
+    server: ss12.ssrsub.one
+    port: "2443"
+    cipher: aes-128-gcm
+    password: https://dlj.tf/ssrsub
+    plugin: obfs
+    plugin-opts:
+      mode: tls
+      host: n46hm52773.wns.windows.com
+  - name: "@SSRSUB-SS11-付费推荐:dlj.tf/ssrsub"
+    type: ss
+    server: 89.46.223.239
+    port: "39772"
+    cipher: aes-256-gcm
+    password: CUndSZnYsPKcu6Kj8THVMBHD
+  # - name: "SS12"
+  - name: "@SSRSUB-SS12-付费推荐:dlj.tf/ssrsub"
+    type: ss
+    server: 91.90.123.115
+    port: "45329"
+    cipher: aes-256-gcm
+    password: CXSjgD7u7Ar7GxkZ4CgTMUsj
+proxy-groups:
+  - name: proxy-group
+    type: select
+    proxies:
+      - "@SSRSUB-SS11-付费推荐:dlj.tf/ssrsub"
+      - "@SSRSUB-SS12-付费推荐:dlj.tf/ssrsub"
+      # - "SS12"
+rules:
+  - MATCH,proxy-group

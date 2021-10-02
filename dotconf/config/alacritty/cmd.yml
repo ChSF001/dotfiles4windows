@@ -1,0 +1,6 @@
+shell: 
+  program: cmd.exe
+  args:
+    - /k
+    #- '"%ConEmuDir%\..\init.bat"'
+    - D:\Programs\scoop\shims\clink_x64.bat
