@@ -1,12 +1,14 @@
+
 ### Added by Zinit's installer
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
-        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
 fi
-source "$HOME/.zinit/bin/zinit.zsh"
+
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit's installer chunk
@@ -30,8 +32,9 @@ autoload -Uz _zinit
 
 zinit light-mode for \
     mskyaxl/zsh-pwd-tmux \
-    zdharma/fast-syntax-highlighting \
-    zsh-users/zsh-autosuggestions
+    zdharma-continuum/fast-syntax-highlighting \
+    zsh-users/zsh-autosuggestions \
+    # larkery/zsh-histdb \
     
 zinit wait="1" lucid for \
     OMZL::clipboard.zsh \
@@ -39,7 +42,9 @@ zinit wait="1" lucid for \
     OMZP::command-not-found/command-not-found.plugin.zsh \
     OMZP::cp/cp.plugin.zsh \
     OMZP::sudo/sudo.plugin.zsh \
-    OMZP::git/git.plugin.zsh
+    OMZP::vi-mode/vi-mode.plugin.zsh \
+    OMZP::git/git.plugin.zsh \
+    OMZL::history.zsh
     # OMZ::plugins/zsh_reload/zsh_reload.plugin.zsh
     
 zinit svn for \
@@ -54,18 +59,48 @@ zinit wait="1" svn for \
     
 zinit as="completion" for \
     OMZP::fd/_fd
-    
+ 
 # zinit light skywind3000/z.lua
 
+# _zsh_autosuggest_strategy_histdb_top_here() {
+#     local query="select commands.argv from
+# history left join commands on history.command_id = commands.rowid
+# left join places on history.place_id = places.rowid
+# where places.dir LIKE '$(sql_escape $PWD)%'
+# and commands.argv LIKE '$(sql_escape $1)%'
+# group by commands.argv order by count(*) desc limit 1"
+#     suggestion=$(_histdb_query "$query")
+# }
+
+# ZSH_AUTOSUGGEST_STRATEGY=histdb_top_here
+
+# _zsh_autosuggest_strategy_histdb_top() {
+#     local query="
+#         select commands.argv from history
+#         left join commands on history.command_id = commands.rowid
+#         left join places on history.place_id = places.rowid
+#         where commands.argv LIKE '$(sql_escape $1)%'
+#         group by commands.argv, places.dir
+#         order by places.dir != '$(sql_escape $PWD)', count(*) desc
+#         limit 1
+#     "
+#     suggestion=$(_histdb_query "$query")
+# }
+
+# ZSH_AUTOSUGGEST_STRATEGY=histdb_top
+
+autoload -Uz add-zsh-hook
+unsetopt share_history
+unsetopt inc_append_history
+
+bindkey ',' autosuggest-accept
 bindkey '^P' history-substring-search-up
 bindkey '^N' history-substring-search-down
 
 zinit ice depth=1
 zinit light romkatv/powerlevel10k
 
-HISTFILE=$HOME/.zsh_history
-HISTSIZE=9999
-SAVEHIST=9999
+# autoload -Uz add-zsh-hook
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -81,6 +116,8 @@ export ELECTRON_MIRROR='http://npm.taobao.org/mirrors/electron'
 # if [ -t 1 ]; then
 #     exec /usr/bin/zsh
 # fi
+
+[ -s "/d/Programs/scoop/persist/jabba/jabba.sh" ] && source "/d/Programs/scoop/persist/jabba/jabba.sh"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"

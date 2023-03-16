@@ -1,0 +1,4 @@
+# To use common configuration in %APPDATA%\mintty, simply remove this file
+Locale=en_SG
+Charset=UTF-8
+Term=xterm-256color

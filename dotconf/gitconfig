@@ -1,0 +1,40 @@
+[user]
+	name = cenhwu
+	email = cenhwu@mail.com
+[diff]
+tool=ultracompare
+[difftool "ultracompare"]
+keepBackup=false
+trustExitCode=false
+prompt=false
+[merge]
+tool=ultracompare
+[mergetool "ultracompare"]
+keepBackup=false
+trustExitCode=false
+prompt=false
+[UC]
+defdiffmerge=yes
+[core]
+	autocrlf = true
+	excludesfile = C:\\Users\\pvz77\\Documents\\gitignore_global.txt
+[credential]
+	helper = manager-core
+[difftool "sourcetree"]
+	cmd = '' \"$LOCAL\" \"$REMOTE\"
+[mergetool "sourcetree"]
+	cmd = "'' "
+	trustExitCode = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[credential "helperselector"]
+	selected = manager-core
+[credential "https://git.ezsoft.com.cn"]
+	provider = generic
+[safe]
+	directory = D:/Users/Protected/Programs/scoop/apps/scoop/current
+	directory = D:/Users/Protected/Programs/scoop/buckets/main
+  directory = F:/pvz77/Documents/JetBrains/IdeaProjects/jeedcp_zjct

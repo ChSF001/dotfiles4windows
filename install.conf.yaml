@@ -8,22 +8,32 @@
     ~/.bash_logout: dotconf/bash_logout
     ~/.bash_profile: dotconf/bash_profile
     ~/.bashrc: dotconf/bashrc
+    ~/.gitconfig: dotconf/gitconfig
+    ~/.myclirc: dotconf/myclirc
+    ~/.nanorc: dotconf/nanorc
     ~/.npmrc: dotconf/npmrc
     ~/.p10k.zsh: dotconf/p10k.zsh
     ~/.profile: dotconf/profile
     ~/.vuerc: dotconf/vuerc
+    ~/.wslconfig: dotconf/wslconfig
     ~/.zshrc: dotconf/zshrc
+    ~/_vimrc: dotconf/vimrc
     ~/.config/cdn/clash/config.yaml: dotconf/config/clash/config.yaml
     ~/.config/clash/config.yaml: dotconf/config/clash/config.yaml
     ~/.config/neofetch/config.conf: dotconf/config/neofetch/config.conf
     ~\AppData\Roaming\alacritty\:
         glob: true
         path: dotconf\config\alacritty\*
+    ~\AppData\Roaming\mintty\config: dotconf/config/mintty/config
+    ~\AppData\Roaming\wsltty\config: dotconf/config/wsltty/config
+    
 - create:
     - ~/.config/neofetch
     - ~/.config/cdn/clash
     - ~/.config/clash
     - ~/AppData/Roaming/alacritty
+    - ~/AppData/Roaming/mintty
+    - ~/AppData/Roaming/wsltty
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

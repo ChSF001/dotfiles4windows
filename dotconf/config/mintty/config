@@ -1,0 +1,10 @@
+# To use common configuration in %APPDATA%\mintty, simply remove this file
+; Language=en_SG
+BoldAsFont=-1
+FontHeight=12
+Font=Consolas
+; Term=xterm-256color
+
+CursorType=block
+
+# BackgroundColour=0,43,54

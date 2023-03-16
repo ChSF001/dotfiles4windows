@@ -192,12 +192,7 @@
 # 
 # alias cd=cd_func
 
-eval "$(lua ~/.zinit/plugins/skywind3000---z.lua/z.lua --init bash enhanced once)"
-
 [ -s "/d/Programs/scoop/persist/jabba/jabba.sh" ] && source "/d/Programs/scoop/persist/jabba/jabba.sh"
-
-# Add the following line at the end of ~/.bashrc
-[[ ${BLE_VERSION-} ]] && ble-attach
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/d/Users/Protected/.sdkman"

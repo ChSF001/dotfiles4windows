@@ -1,0 +1,53 @@
+" set number
+" set nocompatible
+" set wrapmargin=2
+" set scrolloff=5
+" set sidescrolloff=15
+" set history=50
+" set shortmess=a
+" set cmdheight=2
+set encoding=utf-8
+set relativenumber
+set cursorline
+set wildmenu
+set hlsearch
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set backspace=indent,eol,start
+set showmatch
+set fileencodings=ucs-bom,utf-8,chinese,cp836
+set t_Co=256
+set spell spelllang=en_us
+set noswapfile
+" set autoindent
+" set textwidth=80
+" set linebreak
+" set laststatus=2
+" set ruler
+" set incsearch
+" set ignorecase
+" set smartcase
+" set undofile
+" set autochdir
+" set visualbell
+" set autoread
+
+syntax on
+filetype indent on
+
+imap jk <Esc>
+" nmap <space> :
+" nnoremap <space>e :CocCommand explorer<CR>
+
+call plug#begin('$HOME/.vim/plugged')
+  Plug 'vim-airline/vim-airline'
+  Plug 'mhinz/vim-startify'
+  Plug 'itchyny/vim-cursorword'
+" Plug 'preservim/nerdtree'
+" Plug 'weirongxu/coc-explorer'
+  Plug 'preservim/nerdcommenter'
+  Plug 'iamcco/markdown-preview.nvim'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+call plug#end()
